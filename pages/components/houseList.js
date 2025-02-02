@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+
 import HouseRow from "./houseRow";
 import useHouses from "../hooks/useHouses";
 import loadingStatus from "../helpers/loadingStatus";
 import LoadingIndicator from "./loadingIndicator";
 
 
-const HouseList = ( {selectHouse}) => {
-  const {houses, SetHouses, loadingState} = useHouses();
+const HouseList = ( ) => {
+  const {houses, loadingState} = useHouses();
 
   if (loadingState !== loadingStatus.loaded)
       return <LoadingIndicator loadingState={loadingState}/>
@@ -40,11 +40,11 @@ const HouseList = ( {selectHouse}) => {
         </thead>
         <tbody>
           {houses.map((h) => (
-            <HouseRow key={h.id} house={h} selectHouse= {selectHouse}/>
+            <HouseRow key={h.id} house={h}/>
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary" onClick={addHouse}>
+      <button className="btn btn-primary" >
         Add
       </button>
     </>
